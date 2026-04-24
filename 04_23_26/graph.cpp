@@ -151,6 +151,44 @@ std::string graphType::dftAtVertex(int vertex)
     return output;
 }
 
+std::string graphType::breadthFirstTraversal()
+{
+    linkedQueue<int> queue;
+    std::vector<bool> visited(graph.size(), false);
+    std::string out = "";
+    for (int i = 0; i < graph.size(); i++)
+    {
+        if (!visited[i])
+        {
+            queue.enqueue(i);
+            visited[i] = true;
+            if (out.empty())
+            {
+                out = std::to_string(i);
+            }
+            else
+            {
+                out += " " + std::to_string(i);
+            }
+            while (!queue.isEmptyQueue())
+            {
+                int u = queue.dequeue();
+                for (auto graphIt = graph[u].begin(); graphIt != graph[u].end(); ++graphIt)
+                {
+                    int w = **graphIt;
+                    if (!visited[w])
+                    {
+                        queue.enqueue(w);
+                        visited[w] = true;
+                        out += " " + std::to_string(w);
+                    }
+                }
+            }
+        }
+    }
+    return out;
+}
+
 void graphType::copyGraph(const graphType &graphToCopy)
 {
     if (!this->isEmpty())
@@ -168,7 +206,14 @@ void graphType::copyGraph(const graphType &graphToCopy)
 void graphType::dft(int v, bool visited[], std::string &output)
 {
     visited[v] = true;
-    output = output + " --> " + names[v] + " ";
+    if (output.empty())
+    {
+        output = names[v];
+    }
+    else
+    {
+        output = output + " --> " + names[v] + " ";
+    }
     linkedListIterator<int> graphIt;
     for (graphIt = graph[v].begin(); graphIt != graph[v].end(); ++graphIt)
     {
