@@ -161,26 +161,29 @@ std::string graphType::breadthFirstTraversal()
         if (!visited[i])
         {
             queue.enqueue(i);
-            visited[i] = true;
-            if (out.empty())
-            {
-                out = std::to_string(i);
-            }
-            else
-            {
-                out += " " + std::to_string(i);
-            }
+
             while (!queue.isEmptyQueue())
             {
                 int u = queue.dequeue();
+                if (!visited[u])
+                {
+
+                    visited[u] = true;
+                    if (out.empty())
+                    {
+                        out = std::to_string(u);
+                    }
+                    else
+                    {
+                        out += " " + std::to_string(u);
+                    }
+                }
                 for (auto graphIt = graph[u].begin(); graphIt != graph[u].end(); ++graphIt)
                 {
                     int w = **graphIt;
                     if (!visited[w])
                     {
                         queue.enqueue(w);
-                        visited[w] = true;
-                        out += " " + std::to_string(w);
                     }
                 }
             }
