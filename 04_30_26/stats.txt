@@ -1,0 +1,34 @@
+clustered values 10000 size hash table modulus
+
+There were 4000 collisions.
+There were 1000 items inserted.
+
+-----------------------------------------------------------
+uniform values 10000 size hash table modulus
+
+There were 1037 collisions.
+There were 3963 items inserted.
+
+------------------------------------------------------------
+uniform values 10007 size hash table modulus
+
+There were 1075 collisions.
+There were 3925 items inserted.
+
+------------------------------------------------------------
+clustered values 10007 size hash table modulus
+
+There were 3539 collisions.
+There were 1461 items inserted.
+
+------------------------------------------------------------
+uniform values 10007 size hash table mid-square
+
+There were 1049 collisions.
+There were 3951 items inserted.
+
+------------------------------------------------------------
+clustered values 10007 size hash table mid-square
+
+There were 1121 collisions.
+There were 3879 items inserted.
