@@ -86,3 +86,10 @@ clustered values 10007 size hash table modulus linear probing
 There were 4194 collisions.
 There were 5000 items inserted.
 There were 8758390 linear probes done.
+
+-------------------------------------------------------------
+clustered value 10007 size hash table rehashing
+
+There were 977 collisions.
+There were 5000 items inserted.
+There were 1698 linear probes done.
