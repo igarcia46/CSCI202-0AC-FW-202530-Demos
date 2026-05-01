@@ -93,3 +93,52 @@ clustered value 10007 size hash table rehashing
 There were 977 collisions.
 There were 5000 items inserted.
 There were 1698 linear probes done.
+
+------------------------------------------------------------
+uniform values 10007 size hash table modulus quadratic probing
+
+There were 1264 collisions.
+There were 5000 items inserted.
+There were 2199 linear probes done.
+There were 1.73972 average probes per collision.
+
+
+--------------------------------------------------------------
+clustered values 10007 size hash table modulus quadratic probing
+
+There were 4158 collisions.
+There were 5000 items inserted.
+There were 67893 linear probes done.
+There were 16.3283 average probes per collision.
+
+------------------------------------------------------------
+uniform values 10007 size hash table mid-square quadratic probing
+
+There were 1203 collisions.
+There were 5000 items inserted.
+There were 2085 linear probes done.
+There were 1.73317 average probes per collision.
+
+------------------------------------------------------------
+clustered values 10007 size hash table mid-square quadratic probing
+
+There were 1316 collisions.
+There were 5000 items inserted.
+There were 2395 linear probes done.
+There were 1.81991 average probes per collision.
+
+------------------------------------------------------------
+uniform values 10007 size hash table multiplication quadratic probing
+
+There were 1263 collisions.
+There were 5000 items inserted.
+There were 2086 linear probes done.
+There were 1.65162 average probes per collision.
+
+------------------------------------------------------------
+clustered values 10007 size hash table multiplication quadratic probing
+
+There were 932 collisions.
+There were 5000 items inserted.
+There were 1222 linear probes done.
+There were 1.31116 average probes per collision.
