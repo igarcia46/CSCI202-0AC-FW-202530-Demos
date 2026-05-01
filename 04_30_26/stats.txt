@@ -32,3 +32,15 @@ clustered values 10007 size hash table mid-square
 
 There were 1121 collisions.
 There were 3879 items inserted.
+
+------------------------------------------------------------
+uniform values 10007 size hash table multiplication
+
+There were 1064 collisions.
+There were 3936 items inserted.
+
+------------------------------------------------------------
+clustered values 10007 size hash table multiplication
+
+There were 826 collisions.
+There were 4174 items inserted.
