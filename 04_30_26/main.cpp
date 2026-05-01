@@ -14,6 +14,7 @@ void setup();
 int hash(int key);
 int hashing_midsquare(long key, int size);
 int hashing_multiplication(int key);
+int doubleHash(int key);
 
 // lecture activity implement universal hashing (number 6) from https://www.geeksforgeeks.org/hash-functions-and-list-types-of-hash-functions/
 // rerun both experiments
@@ -70,7 +71,7 @@ int main()
                 } */
                 else
                 {
-                    hashValue = (hashValue + i * i) % HT_SIZE;
+                    hashValue = (hashValue + i * doubleHash(num)) % HT_SIZE;
                     probeCount++;
                     pCount++;
                     i++;
@@ -93,6 +94,29 @@ int main()
     std::cout << "There were " << count << " items inserted." << std::endl;
     std::cout << "There were " << probeCount << " linear probes done." << std::endl;
     std::cout << "There were " << static_cast<double>(probeCount) / collisions << " average probes per collision." << std::endl;
+
+    int search = 200934;
+    int hashValue = hash(search);
+    bool found = false;
+    if (ht[hashValue] == search)
+    {
+        found = true;
+    }
+    int i = 1;
+    int pCount = 0;
+    while (!found)
+    {
+        hashValue = (hashValue + i * doubleHash(search)) % HT_SIZE;
+        i++;
+        pCount++;
+        if (ht[hashValue] == search)
+        {
+            found = true;
+        }
+    }
+
+    std::cout << "Found " << search << " at " << hashValue << " hash value " << hash(search) << std::endl;
+    std::cout << "It took " << pCount << " probes to find the value" << std::endl;
 
     Person **people = new Person *[13];
     Person james("james", 28);
@@ -147,7 +171,7 @@ void setup()
 
 int hash(int key)
 {
-    return hashing_multiplication(key);
+    // return hashing_multiplication(key);
     return hashing_midsquare(key, 5);
     return key % HT_SIZE;
 }
@@ -179,4 +203,9 @@ int hashing_multiplication(int key)
     hash = HT_SIZE * fraction;
     hash = floor(hash);
     return static_cast<int>(hash);
+}
+
+int doubleHash(int key)
+{
+    return 1 + (key % (HT_SIZE - 2));
 }
