@@ -26,12 +26,17 @@ int main()
     int ht[HT_SIZE] = {0};
     int collisions = 0;
     int count = 0;
+    unsigned long probeCount = 0;
+    for (int i = 0; i < HT_SIZE; i++)
+    {
+        ht[i] = -1;
+    }
     while (!in.eof())
     {
         int num;
         in >> num;
         int hashValue = hash(num);
-        if (ht[hashValue] == 0)
+        if (ht[hashValue] == -1)
         {
             ht[hashValue] = num;
             std::cout << num << " inserted at " << hashValue << std::endl;
@@ -41,10 +46,38 @@ int main()
         {
             std::cout << num << " collided with " << ht[hashValue] << std::endl;
             collisions++;
+            bool found = false;
+            int pCount = 0;
+            int i = 1;
+            while (ht[hashValue] != -1 && !found)
+            {
+                if (ht[hashValue] == num)
+                {
+                    found = true;
+                }
+                else
+                {
+                    hashValue = (hashValue + i) % HT_SIZE;
+                    probeCount++;
+                    pCount++;
+                }
+            }
+            if (found)
+            {
+                collisions--;
+                probeCount -= pCount;
+                std::cout << "Duplicates are not allowed" << std::endl;
+            }
+            else
+            {
+                ht[hashValue] = num;
+                count++;
+            }
         }
     }
     std::cout << "There were " << collisions << " collisions." << std::endl;
     std::cout << "There were " << count << " items inserted." << std::endl;
+    std::cout << "There were " << probeCount << " linear probes done." << std::endl;
 
     Person **people = new Person *[13];
     Person james("james", 28);
@@ -99,8 +132,8 @@ void setup()
 
 int hash(int key)
 {
-    return hashing_multiplication(key);
-    return hashing_midsquare(key, 5);
+    // return hashing_multiplication(key);
+    // return hashing_midsquare(key, 5);
     return key % HT_SIZE;
 }
 
