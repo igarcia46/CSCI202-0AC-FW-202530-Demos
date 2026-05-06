@@ -3,6 +3,7 @@
 
 #include "block.h"
 #include "linkedQueue.h"
+#include <iostream>
 
 class blockChain
 {
